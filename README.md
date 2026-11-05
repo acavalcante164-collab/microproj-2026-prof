@@ -8,6 +8,12 @@ Para preparar e verificar o ambiente (GHDL + GTKWave), veja [docs/ambiente.md](d
 
 ---
 
-Autor:
-Alonso Fernandes Cavalcante
-acavalcante164@gmail.com
+## Contribuidores
+- **Alonso Fernandes Cavalcante**
+- acavalcante164@gmail.com
+- **Gwylherme Mota  Rodrigues**
+
+---
+
+**UFRR - Universidade Federal de Roraima**  
+**Curso de Ciências da Computação**
