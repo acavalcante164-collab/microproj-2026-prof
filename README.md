@@ -9,5 +9,5 @@ Para preparar e verificar o ambiente (GHDL + GTKWave), veja [docs/ambiente.md](d
 ---
 
 Autor:
-Herbert Rocha
-herberthb12@gmail.com
+Alonso Fernandes Cavalcante
+acavalcante164@gmail.com
