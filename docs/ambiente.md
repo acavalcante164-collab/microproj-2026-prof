@@ -6,7 +6,7 @@ Requisito R7 do enunciado ([specs/MicroProj.pdf](../specs/MicroProj.pdf)): VHDL-
 
 | Ferramenta | Versão | Backend / observação |
 |---|---|---|
-| SO | Fedora 43 | |
+| SO | Zorin | |
 | GHDL | 5.1.1 | backend GCC 15.2.1 |
 | GTKWave | 3.3.125 | |
 
