@@ -2,7 +2,7 @@
 
 Este projeto apresenta os resultados de uma comparação entre processor pipeline vs um monociclo.
 
-A descrição e requisitos do projeto estão disponíveis em [specs/](specs/).
+A descrição e requisitos do projeto estão disponíveis em [specs/](specs/MicroProj.pdf).
 
 Para preparar e verificar o ambiente (GHDL + GTKWave), veja [docs/ambiente.md](docs/ambiente.md).
 
