@@ -10,6 +10,8 @@ Requisito R7 do enunciado ([specs/MicroProj.pdf](../specs/MicroProj.pdf)): VHDL-
 | GHDL | 5.1.1 | backend GCC 15.2.1 |
 | GTKWave | 3.3.125 | |
 
+Link do Git para mais informações do GHDL: https://github.com/ghdl/ghdl.git
+
 ## Instalação
 
 ```bash
