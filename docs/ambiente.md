@@ -6,7 +6,7 @@ Requisito R7 do enunciado ([specs/MicroProj.pdf](../specs/MicroProj.pdf)): VHDL-
 
 | Ferramenta | Versão | Backend / observação |
 |---|---|---|
-| SO | Windows 11 | |
+| SO | Windows 11 Home |26H2|
 | GHDL | 5.1.1 | backend GCC 15.2.1 |
 | GTKWave | 3.3.125 | |
 
