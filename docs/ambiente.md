@@ -16,12 +16,26 @@ Windows : Para usuários do Windows, o GHDL pode ser instalado através do MSYS2
 
 ## Instalação
 
-```bash
-# Fedora
-sudo dnf install ghdl gtkwave
+Opção A: MSYS2 (recomendada)
+1. Baixe o instalador em msys.org e instale (padrão: C:\msys64).
+1. Abra o terminal “MSYS2 UCRT64” (não o MSYS2 MSYS).
+1. Atualize os pacotes:
 
-# Ubuntu / Debian
-sudo apt install ghdl gtkwave
+```bash
+# Windows 11 Home (No Bash)
+pacman -Syu
+```
+
+4. Instale GHDL e GTKWave:
+
+```bash
+pacman -S mingw-w64-ucrt-x86_64-ghdl-mcode mingw-w64-ucrt-x86_64-gtkwave
+```
+5. Confirme:
+
+```bash
+ghdl --version
+gtkwave --version
 ```
 
 ## Verificação do ambiente
