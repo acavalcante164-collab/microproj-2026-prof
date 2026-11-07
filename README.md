@@ -10,7 +10,7 @@ Para preparar e verificar o ambiente (GHDL + GTKWave), veja [docs/ambiente.md](d
 
 ## Contribuidores
 - **Alonso Fernandes Cavalcante** - acavalcante164@gmail.com
-- **Gwylherme Mota  Rodrigues**
+- **Gwylherme Mota  Rodrigues** - gwylhermmrodrigues@gmail.com
 
 ---
 
