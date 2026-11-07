@@ -1,0 +1,5 @@
+*.hex text eol=lf
+*.asm text eol=lf
+*.txt text eol=lf
+*.sh  text eol=lf
+*.vhd text eol=lf
