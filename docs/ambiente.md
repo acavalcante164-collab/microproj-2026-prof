@@ -6,18 +6,36 @@ Requisito R7 do enunciado ([specs/MicroProj.pdf](../specs/MicroProj.pdf)): VHDL-
 
 | Ferramenta | Versão | Backend / observação |
 |---|---|---|
-| SO | Fedora 43 | |
-| GHDL | 5.1.1 | backend GCC 15.2.1 |
-| GTKWave | 3.3.125 | |
+| SO | Windows 11 Home |26H2|
+| GHDL | 6.0.0 | GNAT 16.2.0 |
+| GTKWave | 3.3.127 | |
+
+Link do Git para mais informações do GHDL: https://github.com/ghdl/ghdl.git
+
+Windows : Para usuários do Windows, o GHDL pode ser instalado através do MSYS2, um ambiente semelhante ao Unix para Windows. Isso proporciona uma experiência similar à de usar o GHDL no Linux, e o MSYS2 garante que as dependências sejam gerenciadas corretamente. A documentação do MSYS2 oferece orientações detalhadas sobre como configurar o ambiente.
 
 ## Instalação
 
-```bash
-# Fedora
-sudo dnf install ghdl gtkwave
+Opção A: MSYS2 (recomendada)
+1. Baixe o instalador em msys.org e instale (padrão: C:\msys64).
+1. Abra o terminal “MSYS2 UCRT64” (não o MSYS2 MSYS).
+1. Atualize os pacotes:
 
-# Ubuntu / Debian
-sudo apt install ghdl gtkwave
+```bash
+# Windows 11 Home (No Bash)
+pacman -Syu
+```
+
+4. Instale GHDL e GTKWave:
+
+```bash
+pacman -S mingw-w64-ucrt-x86_64-ghdl-mcode mingw-w64-ucrt-x86_64-gtkwave
+```
+5. Confirme:
+
+```bash
+ghdl --version
+gtkwave --version
 ```
 
 ## Verificação do ambiente
