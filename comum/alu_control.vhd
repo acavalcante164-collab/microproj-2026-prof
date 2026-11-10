@@ -1,3 +1,7 @@
+-- Referencia bibliografica (Secao 8.2):
+-- PATTERSON, D. A.; HENNESSY, J. L. Organizacao e Projeto de Computadores,
+-- 5a edicao, Elsevier, 2017.
+
 library ieee;
 use ieee.std_logic_1164.all;
 
