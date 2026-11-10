@@ -1,29 +1,24 @@
-# ISA implementada (MIPS32)
+# Especificação do Conjunto de Instruções (ISA) — Subconjunto MIPS32
 
-Subconjunto mínimo do enunciado. Mesmo conjunto em O1 (monociclo) e O2 (pipeline).
+Tabela de instruções implementadas nas organizações **O1 (Monociclo)** e **O2 (Pipeline de 5 estágios)**, baseada em **Patterson & Hennessy (2017)** [1].
 
-| Mnemônico | Formato | opcode | funct | Binário (opcode / funct) | Operação em RTL |
-|---|---|---|---|---|---|
-| add | R | 0x00 | 0x20 | 000000 / 100000 | `R[rd] <- R[rs] + R[rt]; PC <- PC + 4` |
-| sub | R | 0x00 | 0x22 | 000000 / 100010 | `R[rd] <- R[rs] - R[rt]; PC <- PC + 4` |
-| and | R | 0x00 | 0x24 | 000000 / 100100 | `R[rd] <- R[rs] & R[rt]; PC <- PC + 4` |
-| or | R | 0x00 | 0x25 | 000000 / 100101 | `R[rd] <- R[rs] \| R[rt]; PC <- PC + 4` |
-| slt | R | 0x00 | 0x2A | 000000 / 101010 | `if (R[rs] < R[rt]) R[rd] <- 1 else R[rd] <- 0; PC <- PC + 4` |
-| addi | I | 0x08 | — | 001000 / — | `R[rt] <- R[rs] + ExtSinal(imediato); PC <- PC + 4` |
-| lw | I | 0x23 | — | 100011 / — | `R[rt] <- MemDados[R[rs] + ExtSinal(imediato)]; PC <- PC + 4` |
-| sw | I | 0x2B | — | 101011 / — | `MemDados[R[rs] + ExtSinal(imediato)] <- R[rt]; PC <- PC + 4` |
-| beq | I | 0x04 | — | 000100 / — | `if (R[rs] == R[rt]) PC <- PC + 4 + (ExtSinal(imediato) << 2) else PC <- PC + 4` |
-| break | especial | 0x00 | 0x0D | 000000 / 001101 | `retired <- 0; PCWrite <- 0; RegWrite <- 0; MemWrite <- 0; done_reg(t+1) <- 1 (mantém 1 até rst)` |
+| Instrução | Formato | `opcode` (31..26) | `funct` (5..0) | Operação RTL (Semântica Real Implementada) | Sinais de Controle (`reg_dst`, `alu_src`, `mem_to_reg`, `reg_write`, `mem_read`, `mem_write`, `branch`, `alu_op`, `is_break`) |
+| :--- | :---: | :---: | :---: | :--- | :---: |
+| `add rd, rs, rt` | R | `000000` | `100000` (`0x20`) | `Regs[rd] <= Regs[rs] + Regs[rt]; PC <= PC + 4` | `1, 0, 0, 1, 0, 0, 0, "10", 0` |
+| `sub rd, rs, rt` | R | `000000` | `100010` (`0x22`) | `Regs[rd] <= Regs[rs] - Regs[rt]; PC <= PC + 4` | `1, 0, 0, 1, 0, 0, 0, "10", 0` |
+| `and rd, rs, rt` | R | `000000` | `100100` (`0x24`) | `Regs[rd] <= Regs[rs] and Regs[rt]; PC <= PC + 4` | `1, 0, 0, 1, 0, 0, 0, "10", 0` |
+| `or rd, rs, rt` | R | `000000` | `100101` (`0x25`) | `Regs[rd] <= Regs[rs] or Regs[rt]; PC <= PC + 4` | `1, 0, 0, 1, 0, 0, 0, "10", 0` |
+| `slt rd, rs, rt` | R | `000000` | `101010` (`0x2A`) | `Regs[rd] <= 1 se (signed(Regs[rs]) < signed(Regs[rt])) senão 0; PC <= PC + 4` | `1, 0, 0, 1, 0, 0, 0, "10", 0` |
+| `addi rt, rs, imm` | I | `001000` | — | `Regs[rt] <= Regs[rs] + sign_ext(imm); PC <= PC + 4` | `0, 1, 0, 1, 0, 0, 0, "00", 0` |
+| `lw rt, imm(rs)` | I | `100011` | — | `Regs[rt] <= Mem[(Regs[rs] + sign_ext(imm))][31:0]; PC <= PC + 4` | `0, 1, 1, 1, 1, 0, 0, "00", 0` |
+| `sw rt, imm(rs)` | I | `101011` | — | `Mem[(Regs[rs] + sign_ext(imm))][31:0] <= Regs[rt]; PC <= PC + 4` | `0, 1, 0, 0, 0, 1, 0, "00", 0` |
+| `beq rs, rt, imm` | I | `000100` | — | `se (Regs[rs] = Regs[rt]) PC <= (PC + 4) + (sign_ext(imm) << 2) senão PC <= PC + 4` | `0, 0, 0, 0, 0, 0, 1, "01", 0` |
+| `break` | R | `000000` | `001101` (`0x0D`) | `done <= '1'` (no próprio ciclo em O1; ao atingir WB em O2); `retired <= "00"`; `halted_reg(t+1) <= '1'`; `PC(t+1) <= PC` (PC estaciona no endereço do `break`) | `0, 0, 0, 0, 0, 0, 0, "00", 1` |
 
-## Formatos de instrução
+> **Nota sobre a planilha da ISA:** Caso você mantenha uma planilha externa (`.xlsx` ou `.csv`), atualize a célula da operação RTL da linha `break` de `done_reg(t+1) <- 1` para:
+> `done <= '1' (no próprio ciclo em O1; em WB no O2); retired <= "00"; PC(t+1) <= PC (congela no endereço do break)`.
 
-| Formato | 31..26 | 25..21 | 20..16 | 15..11 | 10..6 | 5..0 |
-|---|---|---|---|---|---|---|
-| R | opcode | rs | rt | rd | shamt | funct |
-| I | opcode | rs | rt | imediato (15..0) | | |
+---
 
-## Decisões de projeto
-
-- O1 é monociclo.
-- PC inicial: `0x00000000`.
-- O `break` não conta como instrução útil (`retired = 0`). O RTL acima descreve o O1; o O2 terá o seu próprio.
+## Referências
+[1] PATTERSON, D. A.; HENNESSY, J. L. **Organização e Projeto de Computadores: A Interface Hardware/Software**. 5. ed. Rio de Janeiro: Elsevier, 2017.
