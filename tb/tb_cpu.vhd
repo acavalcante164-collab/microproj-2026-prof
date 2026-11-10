@@ -1,4 +1,5 @@
 -- tb_cpu.vhd : testbench unico para O1 e O2 (VHDL-2008)
+-- Baseado no esqueleto da seção 7 do enunciado do MicroProj, com ajustes: ...
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
