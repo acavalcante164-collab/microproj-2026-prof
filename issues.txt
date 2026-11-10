@@ -1,0 +1,24 @@
+26	OPEN	[Docs] Esclarecer menções a O3 no enunciado	P1-alta, área:docs	2026-11-09T18:31:43Z
+25	OPEN	[Testbench] Verificação da memória de dados	P2-média, área:testbench	2026-11-07T17:56:25Z
+24	OPEN	[ISA] Instruções opcionais (bne, j, andi, ori)	P2-média, área:isa	2026-11-07T17:56:23Z
+23	OPEN	[Defesa] Slides e roteiro da demonstração ao vivo	P2-média, área:defesa	2026-11-07T17:56:21Z
+22	OPEN	[Infra] Tag final e congelamento do repositório	P1-alta, área:infra	2026-11-07T17:56:19Z
+21	OPEN	[Relatório] Relatório no modelo SBC (4–10 páginas)	P2-média, área:relatorio	2026-11-07T17:56:17Z
+20	OPEN	[Relatório] Waveforms anotadas	P2-média, área:relatorio	2026-11-07T17:56:15Z
+19	OPEN	[Relatório] Diagramas de caminho de dados, unidade de detecção e registradores	P2-média, área:relatorio	2026-11-07T17:56:13Z
+18	OPEN	[Relatório] Diagramas instrução × ciclo	P2-média, área:relatorio	2026-11-07T17:56:10Z
+17	OPEN	[Métricas] Gráficos de CPI e speedup	P2-média, área:metricas	2026-11-07T17:56:08Z
+16	OPEN	[Docs] README com instruções de reprodução	P1-alta, área:docs	2026-11-07T18:31:00Z
+15	OPEN	[Métricas] Período de clock de cada organização	P1-alta, área:metricas	2026-11-07T17:56:04Z
+14	OPEN	[Métricas] Cálculo das métricas de desempenho	P1-alta, área:metricas	2026-11-07T17:56:02Z
+13	OPEN	[Infra] Script único run_all	P1-alta, área:infra	2026-11-07T17:56:00Z
+12	OPEN	[Traços] Série S de tamanhos (5–200 instruções úteis)	P1-alta, área:tracos	2026-11-07T17:55:58Z
+11	OPEN	[Traços] Traços com conflito TD, TE e TC	P1-alta, área:tracos	2026-11-07T17:55:55Z
+10	OPEN	[Hazard] Semântica de aborto e congelamento	P1-alta, área:o2, área:hazard	2026-11-07T17:55:53Z
+9	OPEN	[Hazard] Detecção de conflito de controle	P1-alta, área:o2, área:hazard	2026-11-07T17:55:51Z
+8	OPEN	[Hazard] Detecção de conflito estrutural (MEM_UNIFICADA)	P1-alta, área:o2, área:hazard	2026-11-07T17:55:49Z
+7	OPEN	[Hazard] Detecção de conflito de dados (RAW)	P1-alta, área:o2, área:hazard	2026-11-07T17:55:47Z
+6	OPEN	[O2] Pipeline de 5 estágios com registradores entre estágios	P0-crítica, área:o2	2026-11-07T17:55:45Z
+5	OPEN	[O1] Caminho de dados da linha de base (mono ou multiciclo)	P0-crítica, área:o1	2026-11-08T20:35:46Z
+3	OPEN	[Testbench] Testbench único tb/tb_cpu.vhd	P0-crítica, área:testbench	2026-11-07T17:55:38Z
+2	OPEN	[Interface] Entidade de topo cpu_top (interface R3)	P0-crítica, área:o1, área:o2	2026-11-07T17:55:36Z
