@@ -1,0 +1,2 @@
+# Estado esperado quando TE roda sem conflito estrutural (MEM_UNIFICADA = false)
+0 00000000
