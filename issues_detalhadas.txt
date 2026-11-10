@@ -1,0 +1,262 @@
+### Issue #26: [Docs] Esclarecer menções a O3 no enunciado
+
+O enunciado cita O3 em alguns trechos (R3, R4 e na descrição), mas só define O1 e O2.
+
+Critério de conclusão:
+- [x] Confirmação do professor registrada neste issue
+- [ ] Interface R3 mantida: stage_valid com 10 bits e retired com 2 bits
+
+---
+
+### Issue #25: [Testbench] Verificação da memória de dados
+
+Item opcional do esqueleto do testbench (seção 7): verificar também posições da memória de dados.
+
+Critério de conclusão:
+- [ ] Formato do esperado.txt estendido
+- [ ] Verificação funcionando em O1 e O2
+
+---
+
+### Issue #24: [ISA] Instruções opcionais (bne, j, andi, ori)
+
+Instruções extras são opcionais e, se feitas, devem constar da tabela da ISA do relatório (R1).
+
+Critério de conclusão:
+- [ ] Decidir se entram
+- [ ] Se entrarem: tabela da ISA atualizada e T0 revisado
+
+---
+
+### Issue #23: [Defesa] Slides e roteiro da demonstração ao vivo
+
+Slides e demonstração ao vivo (seção 5).
+
+Critério de conclusão:
+- [ ] Roteiro: problema, ISA, caminhos de dados, unidade de detecção, resultados e análise crítica
+- [ ] Demonstração a partir da tag: script único, waveform de T0 e traço de conflito sorteado pelo professor
+- [ ] Todos os integrantes sabem explicar qualquer trecho
+
+---
+
+### Issue #22: [Infra] Tag final e congelamento do repositório
+
+Tag final no repositório. Depois da entrega o repositório fica congelado e a demonstração roda a partir da tag (seção 2).
+
+Critério de conclusão:
+- [ ] Branch de onde sai a tag definida (por exemplo, main)
+- [ ] Tag criada e enviada
+- [ ] run_all executado a partir da tag
+
+---
+
+### Issue #21: [Relatório] Relatório no modelo SBC (4–10 páginas)
+
+Relatório em PDF de 4 a 10 páginas, modelo SBC (seção 3), mais apêndices.
+
+Critério de conclusão:
+- [ ] Seções: introdução, fundamentação, metodologia, implementação, resultados, análise crítica, conclusão e referências
+- [ ] Apêndice A (link, tag e comando de reprodução), B (divisão de tarefas) e C (declaração de uso de IA)
+- [ ] Todo número reproduzível pelo script
+
+---
+
+### Issue #20: [Relatório] Waveforms anotadas
+
+Waveforms anotadas de T0 (enchimento e esvaziamento do pipeline em O2) e de cada tipo de conflito (seções 6 e 6.2).
+
+Critério de conclusão:
+- [ ] Eixo de tempo ou número do ciclo
+- [ ] Sinais agrupados por estágio, com PC e instruções em hexadecimal
+- [ ] Marcadores de texto no ciclo relevante
+
+---
+
+### Issue #19: [Relatório] Diagramas de caminho de dados, unidade de detecção e registradores
+
+Diagramas do caminho de dados de O1 e O2 (em O2, com IF/ID, ID/EX, EX/MEM e MEM/WB nomeados), da unidade de detecção, e lista de campos de cada registrador entre estágios com largura em bits (seção 6).
+
+Critério de conclusão:
+- [ ] Coerentes com o código VHDL
+- [ ] Elaborados pelo próprio grupo
+
+---
+
+### Issue #18: [Relatório] Diagramas instrução × ciclo
+
+Uma tabela por organização, para as 10 primeiras e as 3 últimas instruções de T0 (seção 6.1).
+
+Critério de conclusão:
+- [ ] Formato instrução × ciclo, com o estágio em cada célula
+- [ ] Coerente com a waveform
+
+---
+
+### Issue #17: [Métricas] Gráficos de CPI e speedup
+
+CPI por organização, speedup medido ao lado do ideal e speedup × tamanho do traço, com eixo x logarítmico (seção 6).
+
+Critério de conclusão:
+- [ ] 3 gráficos gerados por script
+- [ ] Figuras numeradas, com legenda e citadas no texto
+
+---
+
+### Issue #16: [Docs] README com instruções de reprodução
+
+README com instruções de execução e o comando único de reprodução (seção 1.4).
+
+Critério de conclusão:
+- [ ] Dependências (GHDL, GTKWave, MARS)
+- [ ] Como rodar o script único
+- [ ] Como abrir as waveforms
+
+---
+
+### Issue #15: [Métricas] Período de clock de cada organização
+
+Período de clock vindo de síntese (Yosys, Quartus ou Vivado) ou de tabela de atrasos por componente somando o overhead dos registradores entre estágios (R6).
+
+Critério de conclusão:
+- [ ] Valor justificado
+- [ ] Mesmo critério nas duas organizações
+
+---
+
+### Issue #14: [Métricas] Cálculo das métricas de desempenho
+
+Para cada organização e cada traço limpo: ciclos totais, CPI, IPC, tempo de execução, speedup de O2 sobre O1 comparado ao ideal, efeito do enchimento e esvaziamento e taxa de ocupação por estágio e por via (R6).
+
+Critério de conclusão:
+- [ ] Ciclos contados do 1º ciclo após o reset até done = 1, inclusive
+- [ ] break não conta como instrução útil
+- [ ] metricas.csv completo
+
+---
+
+### Issue #13: [Infra] Script único run_all
+
+Script (Makefile ou .sh) que compila, roda todos os traços e gera a tabela de métricas com um único comando (R7).
+
+Critério de conclusão:
+- [ ] Cada organização compila em workdir próprio (build/o1 e build/o2)
+- [ ] Gera metricas.csv
+- [ ] Todo número do relatório é reproduzível pelo script
+
+---
+
+### Issue #12: [Traços] Série S de tamanhos (5–200 instruções úteis)
+
+Variações de T0 com 5, 10, 20, 50, 100 e 200 instruções úteis, para o gráfico de speedup por tamanho (R5). Podem ser geradas por script.
+
+Critério de conclusão:
+- [ ] 6 traços com .asm, .hex e esperado.txt
+- [ ] Todos livres de conflitos em O1 e O2
+
+---
+
+### Issue #11: [Traços] Traços com conflito TD, TE e TC
+
+Um traço curto para cada tipo de conflito, que provoca o aborto em O2 (R5).
+
+Critério de conclusão:
+- [ ] td, te e tc com fonte .asm e .hex
+- [ ] Tabela de registro de conflitos: tipo esperado, tipo detectado, hazard_pc, hazard_cycle e organização
+- [ ] Rodam com ESPERA_ABORTO = true e o TIPO_ESPERADO certo no testbench
+
+---
+
+### Issue #10: [Hazard] Semântica de aborto e congelamento
+
+Ao detectar um conflito: hazard_abort = 1, preencher hazard_type, hazard_pc e hazard_cycle e congelar PC, registradores entre estágios, banco de registradores e memória até o próximo reset (R4).
+
+Critério de conclusão:
+- [ ] Sinais estáveis até o próximo reset
+- [ ] hazard_cycle segue a convenção do testbench (ciclo 1 = primeiro após o reset)
+- [ ] Waveform mostra o congelamento no ciclo exato
+
+---
+
+### Issue #9: [Hazard] Detecção de conflito de controle
+
+Desvio tomado (ou salto) com instruções já buscadas depois dele (R4). hazard_type = 11 e hazard_pc aponta para o desvio.
+
+Critério de conclusão:
+- [ ] Estágio em que o desvio é resolvido definido e justificado
+- [ ] beq não tomado seguido de busca sequencial NÃO é conflito (preparar a justificativa para a defesa)
+- [ ] Traço TC aborta com o tipo e o PC corretos
+
+---
+
+### Issue #8: [Hazard] Detecção de conflito estrutural (MEM_UNIFICADA)
+
+Só com MEM_UNIFICADA = true: IF e um lw/sw em MEM no mesmo ciclo (R4). hazard_type = 10 e hazard_pc aponta para a instrução mais nova, que não obteve o recurso.
+
+Critério de conclusão:
+- [ ] Com MEM_UNIFICADA = false o conflito não é detectado
+- [ ] Traço TE aborta com o tipo e o PC corretos
+
+---
+
+### Issue #7: [Hazard] Detecção de conflito de dados (RAW)
+
+Detectar leitura de registrador que uma instrução anterior ainda não escreveu (R4). hazard_type = 01 e hazard_pc aponta para a instrução consumidora.
+
+Critério de conclusão:
+- [ ] Escrita em $zero não gera dependência
+- [ ] Detecção antes de a instrução prejudicada produzir efeito errado
+- [ ] Considera que o banco escreve na 1ª metade do ciclo e lê na 2ª
+- [ ] Traço TD aborta com o tipo e o PC corretos
+
+---
+
+### Issue #6: [O2] Pipeline de 5 estágios com registradores entre estágios
+
+Pipeline escalar de 5 estágios (IF, ID, EX, MEM, WB), 1 instrução por ciclo, com registradores entre estágios e bit de validade em cada um.
+
+Critério de conclusão:
+- [ ] Registradores IF/ID, ID/EX, EX/MEM e MEM/WB
+- [ ] stage_valid e retired corretos
+- [ ] Executa T0 sem erros em relação ao esperado.txt
+- [ ] Sem forwarding, stall, flush ou predição
+- [ ] Definido quando o break conclui no O2 (sugestão: ao passar por WB, depois das instruções anteriores)
+
+---
+
+### Issue #5: [O1] Caminho de dados da linha de base (mono ou multiciclo)
+
+Caminho de dados da linha de base, sem pipeline. Decisão do projeto: monociclo.
+
+Critério de conclusão:
+- [x] Executa T0 sem erros em relação ao esperado.txt
+- [ ] Memórias de instruções e de dados separadas
+- [ ] Banco de registradores escreve na 1ª metade do ciclo e lê na 2ª
+- [x] break: done vai a 1 e o processador congela
+- [x] Justificativa da escolha do monociclo registrada para o relatório
+
+---
+
+### Issue #3: [Testbench] Testbench único tb/tb_cpu.vhd
+
+Testbench único (seção 7): gera clock e reset, carrega o programa, conta ciclos, instruções e ocupação, verifica o desfecho e grava metricas.csv.
+
+Critério de conclusão:
+- [ ] Compila em VHDL-2008 com GHDL (atenção: no PDF o generic MAX_CICLOS aparece depois do ");" do generic, o que não compila)
+- [ ] Compara registradores com esperado.txt
+- [ ] Grava uma linha por execução em metricas.csv
+- [ ] Funciona em O1 e O2 sem alterações
+
+---
+
+### Issue #2: [Interface] Entidade de topo cpu_top (interface R3)
+
+Entidade de topo cpu_top idêntica em O1 e O2, para um único testbench servir às duas (R3).
+
+Critério de conclusão:
+- [ ] Genéricos PROG_FILE e MEM_UNIFICADA
+- [ ] Portas clk, rst, done, hazard_abort, hazard_type, hazard_pc, hazard_cycle, retired, stage_valid(9 downto 0), dbg_reg_addr e dbg_reg_data
+- [ ] O1 usa só stage_valid(0); O2 usa os bits 4..0
+- [ ] O mesmo tb_cpu.vhd compila com as duas organizações
+
+---
+
