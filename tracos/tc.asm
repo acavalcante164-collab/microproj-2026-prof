@@ -4,7 +4,7 @@
 # 0x04      20080001    addi $t0, $zero, 1         # Buscada sequencialmente em ID
 # 0x08      20090002    addi $t1, $zero, 2         # Buscada sequencialmente em IF
 # 0x0C      0000000D    ALVO: break
-beq  $zero, $zero, 2
+beq  $zero, $zero, ALVO
 addi $t0, $zero, 1
 addi $t1, $zero, 2
-break
+ALVO: break

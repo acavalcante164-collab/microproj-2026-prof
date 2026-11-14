@@ -1,5 +1,7 @@
+-- Referencia bibliografica (Secao 8.2):
+-- PATTERSON, D. A.; HENNESSY, J. L. Organizacao e Projeto de Computadores,
+-- 5a edicao, Elsevier, 2017.
 -- tb_cpu.vhd : testbench unico para O1 e O2 (VHDL-2008)
--- Baseado no esqueleto da seção 7 do enunciado do MicroProj, com ajustes: ...
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -39,8 +41,7 @@ begin
   -- 1. Geracao de clock: para quando fim_sim = true
   clk <= not clk after T_CLK / 2 when not fim_sim else '0';
 
-  -- 2. Processador sob teste. Cada organizacao fica em sua pasta, com a
-  -- entidade cpu_top, e e compilada em uma biblioteca de trabalho separada.
+  -- 2. Processador sob teste
   dut : entity work.cpu_top
     generic map (
       PROG_FILE     => PROG_FILE,
@@ -69,6 +70,10 @@ begin
     variable ciclos   : natural := 0;
     variable instrs   : natural := 0;
     variable ocupados : natural := 0;
+    type nat_array is array (0 to 4) of natural;
+    type real_array is array (0 to 4) of real;
+    variable stg_cnt  : nat_array  := (others => 0);
+    variable stg_ocup : real_array := (others => 0.0);
     variable erros    : natural := 0;
     variable reg_num  : integer;
     variable valor    : std_logic_vector(31 downto 0);
@@ -80,8 +85,7 @@ begin
     wait until rising_edge(clk);
     rst <= '0';
 
-    -- 3.2 Execucao: amostra na borda de DESCIDA, no meio do ciclo,
-    -- quando as saidas do processador ja estao estaveis
+    -- 3.2 Execucao: amostra na borda de DESCIDA, no meio do ciclo
     loop
       wait until falling_edge(clk);
       ciclos := ciclos + 1;
@@ -89,6 +93,11 @@ begin
       for i in 0 to NUM_SLOTS - 1 loop
         if stage_valid(i) = '1' then
           ocupados := ocupados + 1;
+        end if;
+      end loop;
+      for i in 0 to 4 loop
+        if stage_valid(i) = '1' then
+          stg_cnt(i) := stg_cnt(i) + 1;
         end if;
       end loop;
       exit when done = '1' or hazard_abort = '1' or ciclos = MAX_CICLOS;
@@ -126,12 +135,12 @@ begin
         report "Nao foi possivel abrir " & ESPERADO_FILE severity failure;
       while not endfile(f_esp) loop
         readline(f_esp, l);
-        next when l'length = 0; -- ignora linhas vazias
-        next when l(1) = '#';   -- ignora comentarios
-        read(l, reg_num);       -- ex.: "9 0000002A"
+        next when l'length = 0;
+        next when l(1) = '#';
+        read(l, reg_num);
         hread(l, valor);
         dbg_reg_addr <= std_logic_vector(to_unsigned(reg_num, 5));
-        wait for 1 ns;          -- leitura combinacional estabiliza
+        wait for 1 ns;
         if dbg_reg_data /= valor then
           erros := erros + 1;
           report "Reg " & integer'image(reg_num) & ": esperado 0x" &
@@ -147,18 +156,23 @@ begin
     end if;
 
     -- 3.5 Metricas: uma linha por execucao em metricas.csv
-    -- org;programa;ciclos;instrucoes;CPI;IPC;ocupacao;erros
+    -- org;programa;ciclos;instrucoes;CPI;IPC;ocup_via;ocup_s0_if;ocup_s1_id;ocup_s2_ex;ocup_s3_mem;ocup_s4_wb;erros
     if instrs > 0 then
       cpi := real(ciclos) / real(instrs);
       ipc := real(instrs) / real(ciclos);
     end if;
     ocup := real(ocupados) / real(ciclos * NUM_SLOTS);
+    for i in 0 to 4 loop
+      stg_ocup(i) := real(stg_cnt(i)) / real(ciclos);
+    end loop;
 
     file_open(st, f_csv, "metricas.csv", append_mode);
     write(l, ORG_NOME & ";" & PROG_FILE & ";" & integer'image(ciclos) & ";" &
              integer'image(instrs) & ";" & real'image(cpi) & ";" &
              real'image(ipc) & ";" & real'image(ocup) & ";" &
-             integer'image(erros));
+             real'image(stg_ocup(0)) & ";" & real'image(stg_ocup(1)) & ";" &
+             real'image(stg_ocup(2)) & ";" & real'image(stg_ocup(3)) & ";" &
+             real'image(stg_ocup(4)) & ";" & integer'image(erros));
     writeline(f_csv, l);
     file_close(f_csv);
 
