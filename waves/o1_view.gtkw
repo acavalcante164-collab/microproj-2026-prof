@@ -1,0 +1,29 @@
+[timestart] 0
+[size] 1280 720
+[pos] -1 -1
+*-26.000000 35000000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.tb_cpu.
+[treeopen] top.tb_cpu.dut.
+@200
+-Clock e Controle Global (R3)
+@28
+top.tb_cpu.clk
+top.tb_cpu.rst
+top.tb_cpu.done
+top.tb_cpu.retired[1:0]
+top.tb_cpu.stage_valid[0]
+@200
+-Caminho de Dados Monociclo (O1)
+@22
+top.tb_cpu.dut.pc_reg[31:0]
+top.tb_cpu.dut.instr[31:0]
+@28
+top.tb_cpu.dut.we_gated
+top.tb_cpu.dut.mw_gated
+top.tb_cpu.dut.take_branch
+top.tb_cpu.dut.is_break
+@22
+top.tb_cpu.dut.reg_wa[4:0]
+top.tb_cpu.dut.reg_wd[31:0]
+top.tb_cpu.dut.alu_result[31:0]

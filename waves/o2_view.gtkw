@@ -1,0 +1,55 @@
+[timestart] 0
+[size] 1366 768
+[pos] -1 -1
+*-25.500000 35000000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.tb_cpu.
+[treeopen] top.tb_cpu.dut.
+@200
+-Clock, Reset e Ciclo
+@28
+top.tb_cpu.clk
+top.tb_cpu.rst
+@24
+top.tb_cpu.dut.cycle_cnt[31:0]
+@28
+top.tb_cpu.done
+top.tb_cpu.retired[1:0]
+@200
+-Ocupacao dos 5 Estagios (IF, ID, EX, MEM, WB)
+@28
+top.tb_cpu.dut.if_valid
+top.tb_cpu.dut.id_valid
+top.tb_cpu.dut.ex_valid
+top.tb_cpu.dut.mem_valid
+top.tb_cpu.dut.wb_valid
+@200
+-PC de Cada Estagio do Pipeline
+@22
+top.tb_cpu.dut.pc_reg[31:0]
+top.tb_cpu.dut.id_pc[31:0]
+top.tb_cpu.dut.ex_pc[31:0]
+top.tb_cpu.dut.mem_pc[31:0]
+top.tb_cpu.dut.wb_pc[31:0]
+@200
+-Escrita Meio Ciclo (WB -> Banco de Regs)
+@28
+top.tb_cpu.dut.wb_we_gated
+@24
+top.tb_cpu.dut.wb_wa[4:0]
+@22
+top.tb_cpu.dut.wb_wd[31:0]
+@200
+-Unidade de Deteccao de Hazards (R5)
+@28
+top.tb_cpu.hazard_abort
+top.tb_cpu.hazard_type[1:0]
+@22
+top.tb_cpu.hazard_pc[31:0]
+@24
+top.tb_cpu.hazard_cycle[31:0]
+@28
+top.tb_cpu.dut.raw_hazard
+top.tb_cpu.dut.struct_hazard
+top.tb_cpu.dut.ctrl_hazard
+top.tb_cpu.dut.freeze_pipe
