@@ -1,5 +1,7 @@
 # Projeto Referente a Disciplina DCC 301 da UFRR
 
+![CAPA DO TRABALHO](imagens/MIPS.jpg)
+
 Este projeto apresenta os resultados de uma comparação entre processor pipeline vs um monociclo.
 
 A descrição e requisitos do projeto estão disponíveis em [specs/](specs/MicroProj.pdf).
