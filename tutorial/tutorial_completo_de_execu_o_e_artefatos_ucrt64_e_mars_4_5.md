@@ -258,7 +258,3 @@ Assim que a janela do GTKWave abrir, clique na área preta das ondas e pressione
    - Veja `hazard_abort` e `freeze_pipe` subindo para `'1'` exatamente no ciclo do conflito (`cycle_cnt = 3` em `TD`/`TC` e `cycle_cnt = 4` em `TE`), travando `hazard_type`, `hazard_pc` e `hazard_cycle`.
 
 ---
-
-## 7. Como Salvar este Tutorial Dentro da Pasta `docs/` do Repositório
-
-Se quiser gravar este tutorial também como `docs/tutorial_execucao.md` no seu repositório Git, basta copiar o arquivo gerado ao lado ou adicioná-lo com `git add docs/ && git commit -m "Adiciona tutorial completo de execucao no UCRT64 e MARS" && git push origin develop`.
