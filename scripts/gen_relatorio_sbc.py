@@ -9,7 +9,7 @@ os.makedirs("docs", exist_ok=True)
 # =============================================================================
 md_report = """# Relatório Técnico (Formato SBC) — Implementação e Avaliação de Desempenho das Organizações MIPS32 Monociclo (O1) e Pipeline de 5 Estágios (O2)
 
-**Autor:** Alonso Fernandes Cavalcante  
+**Autor:** Alonso Fernandes Cavalcante, Gwylherme Mota Rodrigues  
 **Instituição:** Departamento de Ciência da Computação — Universidade Federal de Roraima (DCC/UFRR)  
 **Disciplina:** Arquitetura e Organização de Computadores  
 
@@ -164,7 +164,7 @@ tex_report = r"""\documentclass[12pt]{article}
 \usepackage{hyperref}
 
 \title{\textbf{Implementação e Avaliação Experimental das Organizações MIPS32 Monociclo (O1) e Pipeline de 5 Estágios (O2)}}
-\author{Alonso Fernandes Cavalcante\\
+\author{Alonso Fernandes Cavalcante, Gwylherme Mota Rodrigues\\
 Departamento de Ciência da Computação -- Universidade Federal de Roraima (DCC/UFRR)\\
 Boa Vista -- RR -- Brasil}
 \date{2026}

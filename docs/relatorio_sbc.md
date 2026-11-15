@@ -1,6 +1,6 @@
 # Relatório Técnico (Formato SBC) — Implementação e Avaliação de Desempenho das Organizações MIPS32 Monociclo (O1) e Pipeline de 5 Estágios (O2)
 
-**Autor:** Alonso Fernandes Cavalcante  
+**Autor:** Alonso Fernandes Cavalcante, Gwylherme Mota Rodrigues  
 **Instituição:** Departamento de Ciência da Computação — Universidade Federal de Roraima (DCC/UFRR)  
 **Disciplina:** Arquitetura e Organização de Computadores  
 
