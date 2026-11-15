@@ -2,7 +2,7 @@
 
 ![CAPA DO TRABALHO](imagens/MIPS.jpg)
 
-Este projeto apresenta os resultados de uma comparação entre processor pipeline vs um monociclo.
+Este projeto apresenta os resultados de uma comparação entre processador pipeline vs um monociclo.
 
 A descrição e requisitos do projeto estão disponíveis em [specs/](specs/MicroProj.pdf).
 
