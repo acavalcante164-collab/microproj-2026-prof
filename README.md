@@ -6,7 +6,7 @@ A descrição e requisitos do projeto estão disponíveis em [specs/](specs/Micr
 
 Para preparar e verificar o ambiente (GHDL + GTKWave), veja [docs/ambiente.md](docs/ambiente.md).
 
-Guia Completo de Execução e Rastreabilidade dos Artefatos (MSYS2 UCRT64 e MARS 4.5) [tutorial](tutorial/tutorial_completo_de_execu_o_e_artefatos_ucrt64_e_mars_4_5.md)
+Guia Completo de Execução e Rastreabilidade dos Artefatos (MSYS2 UCRT64 e MARS 4.5), veja [guia/](tutorial/tutorial_completo_de_execu_o_e_artefatos_ucrt64_e_mars_4_5.md).
 
 ---
 
